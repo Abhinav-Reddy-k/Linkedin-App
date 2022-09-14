@@ -1,0 +1,14 @@
+<form #creds="ngForm" (ngSubmit)="onSubmit(creds)">
+<mat-form-field appearance="fill">
+  <mat-label>Email</mat-label>
+  <input ngModel name="email" required matInput>
+  <mat-error>Email is required</mat-error>
+</mat-form-field>
+<mat-form-field appearance="fill" >
+  <mat-label>Password</mat-label>
+  <input ngModel name="password" matInput type="password" required>
+  <mat-error>Password is required</mat-error>
+</mat-form-field>
+<button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
+
