@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {passwordMatchValidator} from "../common/validators/passwordMatch.validator";
+import {RegisterService} from "./register.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -8,12 +10,14 @@ import {passwordMatchValidator} from "../common/validators/passwordMatch.validat
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  doesPassMatch:boolean=false;
-
   form = new FormGroup({
+    firstName:new FormControl('',[Validators.required]),
+    lastName:new FormControl('',[Validators.required]),
+    phone:new FormControl('',[Validators.required]),
     email:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('', [Validators.required, Validators.minLength(10)]),
-    confirm_password:new FormControl('',Validators.required)
+    confirm_password:new FormControl('',Validators.required),
+    pronounId:new FormControl(0,[Validators.required]),
   },{validators:[passwordMatchValidator]})
 
   get email() {return this.form.get('email')}
@@ -30,12 +34,19 @@ export class RegisterComponent implements OnInit {
         this.confirm_password.setErrors(null);
       }
   }
-  constructor() { }
+  constructor(private registerService:RegisterService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-  console.log(this.email?.value,this.password?.value,this.confirm_password?.value)
+    if(!this.form.valid){
+      return
+    }
+    this.registerService.registerUser({...this.form.value,imageUrl:"",headline:""}).subscribe((profile) => {
+      this.router.navigate(["/profile"])
+    },error => {
+      console.log(error)
+    })
   }
 }

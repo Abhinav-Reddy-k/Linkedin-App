@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {LoginService} from "./login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -8,12 +10,23 @@ import {NgForm} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  profile:any;
+
+  constructor(private loginService: LoginService,private router:Router) {
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit(creds: NgForm) {
-    console.log(creds.value)
+    if(!creds.valid){
+      return
+    }
+    this.loginService.authenticateUser(creds.value).subscribe((profile)=> {
+      this.profile = profile;
+      this.router.navigate(["/profile"])
+    },error => {
+      console.log(error)
+    });
   }
 }

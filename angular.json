@@ -63,12 +63,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "Linkedin:build:production"
             },
             "development": {
-              "browserTarget": "Linkedin:build:development"
+              "browserTarget": "Linkedin:build:development",
             }
           },
           "defaultConfiguration": "development"
