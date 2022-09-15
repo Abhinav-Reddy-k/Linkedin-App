@@ -15,7 +15,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,19 +25,20 @@ import {FormsModule} from "@angular/forms";
     ProfileComponent,
     AuthComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

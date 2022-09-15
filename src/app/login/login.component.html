@@ -1,14 +1,21 @@
-<form #creds="ngForm" (ngSubmit)="onSubmit(creds)">
+<div class="center">
+<form #creds="ngForm" class="center" (ngSubmit)="onSubmit(creds)">
 <mat-form-field appearance="fill">
   <mat-label>Email</mat-label>
-  <input ngModel name="email" required matInput>
-  <mat-error>Email is required</mat-error>
+  <input ngModel type="email" #email="ngModel" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required  matInput>
+  <mat-error *ngIf="!email.value">Email is required</mat-error>
+  <mat-error *ngIf="!email.valid && email.value">Enter a valid email</mat-error>
 </mat-form-field>
+  <br>
 <mat-form-field appearance="fill" >
   <mat-label>Password</mat-label>
-  <input ngModel name="password" matInput type="password" required>
-  <mat-error>Password is required</mat-error>
+  <input ngModel name="password" #pass="ngModel" minlength="10" matInput type="password" required>
+  <mat-error *ngIf="!pass.value">Password is required</mat-error>
+  <mat-error *ngIf="!pass.valid && pass.value">Min length is 10</mat-error>
 </mat-form-field>
+  <br>
+  <br>
 <button mat-raised-button color="primary" type="submit">Submit</button>
 </form>
 
+</div>
