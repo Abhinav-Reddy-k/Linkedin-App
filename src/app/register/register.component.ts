@@ -3,6 +3,8 @@ import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@a
 import {passwordMatchValidator} from "../common/validators/passwordMatch.validator";
 import {RegisterService} from "./register.service";
 import {Router} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {login} from "../login/login.actions";
 
 @Component({
   selector: 'app-register',
@@ -34,7 +36,7 @@ export class RegisterComponent implements OnInit {
         this.confirm_password.setErrors(null);
       }
   }
-  constructor(private registerService:RegisterService,private router:Router) { }
+  constructor(private registerService:RegisterService,private router:Router,private store:Store) { }
 
   ngOnInit(): void {
   }
@@ -43,10 +45,11 @@ export class RegisterComponent implements OnInit {
     if(!this.form.valid){
       return
     }
-    this.registerService.registerUser({...this.form.value,imageUrl:"",headline:""}).subscribe((profile) => {
+    this.registerService.create({...this.form.value,imageUrl:"",headline:""}).subscribe((profile) => {
+      this.store.dispatch(login({data:profile}))
       this.router.navigate(["/profile"])
     },error => {
-      console.log(error)
+      throw error
     })
   }
 }

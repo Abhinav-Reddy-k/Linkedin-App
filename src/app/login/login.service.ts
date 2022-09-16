@@ -1,17 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import {HttpService} from "../common/services/http.service";
+
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService extends HttpService {
 
-  baseUrl: String = "http://localhost:8080/api";
-  constructor(private http:HttpClient) {
+  constructor(http: HttpClient) {
+    super( "http://localhost:8080/api/profiles/auth",http)
   }
 
-  authenticateUser(creds:any){
-    return this.http.post(`${this.baseUrl}/profiles/auth`,creds)
-  }
 }

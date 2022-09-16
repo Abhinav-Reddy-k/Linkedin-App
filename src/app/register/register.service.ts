@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {HttpService} from "../common/services/http.service";
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
-
-  baseUrl: String = "http://localhost:8080/api";
-  constructor(private http:HttpClient) {
-  }
-
-  registerUser(creds:any){
-    return this.http.post(`${this.baseUrl}/profiles`,creds)
+export class RegisterService extends HttpService{
+  constructor(http:HttpClient) {
+    super("http://localhost:8080/api/profiles",http)
   }
 }

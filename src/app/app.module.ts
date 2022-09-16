@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
@@ -18,6 +18,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginService} from "./login/login.service";
 import {HttpClientModule} from "@angular/common/http";
+import {AppErrorHandler} from "./common/app-error-handler";
+import {StoreModule} from '@ngrx/store';
+import {loginReducer} from "./login/login.reducer";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+
 
 @NgModule({
   declarations: [
@@ -40,9 +45,11 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({login: loginReducer}),
+    StoreDevtoolsModule.instrument(),
   ],
-  providers: [LoginService],
+  providers: [LoginService, {provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

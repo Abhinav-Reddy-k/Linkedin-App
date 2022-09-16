@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
-
+  profile$:any;
+  constructor(private store:Store) {
+    // @ts-ignore
+    this.profile$ = store.select((state) => state.login.data)
+    this.profile$.subscribe(console.log)
+  }
   ngOnInit(): void {
+
   }
 
 }
