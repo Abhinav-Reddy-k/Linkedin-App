@@ -29,6 +29,12 @@ import { CertificationComponent } from './certification/certification.component'
 import {certificationReducer} from "./certification/certification.reducer";
 import { SkillComponent } from './skill/skill.component';
 import {skillReducer} from "./skill/skill.reducer";
+import { ExperienceComponent } from './experience/experience.component';
+import {experienceReducer} from "./experience/experience.reducer";
+import {MatDividerModule} from "@angular/material/divider";
+import { EducationFormComponent } from './education-form/education-form.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -40,9 +46,12 @@ import {skillReducer} from "./skill/skill.reducer";
     AuthComponent,
     EducationComponent,
     CertificationComponent,
-    SkillComponent
+    SkillComponent,
+    ExperienceComponent,
+    EducationFormComponent
   ],
   imports: [
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     MatFormFieldModule,
@@ -56,11 +65,19 @@ import {skillReducer} from "./skill/skill.reducer";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({login: loginReducer,education:educationReducer,certification:certificationReducer,skill:skillReducer}),
+    StoreModule.forRoot({
+      login: loginReducer,
+      education: educationReducer,
+      certification: certificationReducer,
+      skill: skillReducer,
+      experience: experienceReducer
+    }),
     StoreDevtoolsModule.instrument(),
     MatCardModule,
+    MatDividerModule,
+    MatDatepickerModule,
   ],
-  providers: [LoginService, {provide: ErrorHandler, useClass: AppErrorHandler}],
+  providers: [MatDatepickerModule,LoginService, {provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -37,6 +37,12 @@ export class HttpService {
     )
   }
 
+  updateUrl(resource: any,url:string) {
+    return this.http.put(this.baseUrl+url, resource).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   delete(resource: any) {
     return this.http.delete(this.baseUrl, resource).pipe(
       catchError(this.handleError)

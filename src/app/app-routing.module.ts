@@ -5,6 +5,7 @@ import {AppComponent} from "./app.component";
 import {AuthComponent} from "./auth/auth.component";
 import {RegisterComponent} from "./register/register.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {EducationFormComponent} from "./education-form/education-form.component";
 
 const routes: Routes = [
   {path: "", redirectTo:"auth/login",pathMatch:"full"},
@@ -23,6 +24,8 @@ const routes: Routes = [
       },
     ],
   },
+
+  {path:"profile/education/:id",component:EducationFormComponent},
   {path:"profile",component:ProfileComponent}
 ];
 

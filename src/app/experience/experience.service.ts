@@ -5,22 +5,18 @@ import {HttpService} from "../common/services/http.service";
 @Injectable({
   providedIn: 'root'
 })
-export class EducationService extends HttpService {
+export class ExperienceService extends HttpService {
 
   constructor(http: HttpClient) {
-    super( "http://localhost:8080/api/education",http)
+    super( "http://localhost:8080/api/experience",http)
   }
 
-  getProfileEducation(id:number){
+  getProfileExperience(id:number){
     return this.getAllUrl(`/profile/${id.toString()}`)
   }
 
-  deleteProfileEducation(id:number){
+  deleteProfileExperience(id:number){
     return this.deleteUrl(`/${id.toString()}`)
-  }
-
-  updateEducation(resource: any, id:number) {
-    return super.updateUrl(resource, `/${id.toString()}`);
   }
 
 }
