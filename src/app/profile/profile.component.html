@@ -1,1 +1,22 @@
-<p>profile works!</p>
+<div class="center">
+  <h2>Profile</h2>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{profile.firstName | uppercase}}  {{profile.lastName | uppercase}} </mat-card-title>
+    <mat-card-subtitle>{{profile.headline}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="profile.imageUrl" alt="profile pic">
+  <mat-card-content>
+    <pre>
+      email : {{profile.email}}
+      phone : {{profile.phone}}
+    </pre>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+  <h2>Education</h2>
+  <app-education></app-education>
+</div>

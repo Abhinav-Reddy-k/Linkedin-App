@@ -4,10 +4,7 @@ import {catchError} from "rxjs/operators"
 import {throwError} from "rxjs";
 import {NotFoundError} from "../errors/not-found-error";
 import {AppError} from "../errors/app-error";
-//
-// @Injectable({
-//   providedIn: 'root'
-// })
+
 export class HttpService {
 
   constructor(private baseUrl: string, private http: HttpClient) {
@@ -15,6 +12,11 @@ export class HttpService {
 
   getAll() {
     return this.http.get(this.baseUrl).pipe(catchError(this.handleError))
+  }
+
+
+  getAllUrl(url:string){
+    return this.http.get(this.baseUrl+url).pipe(catchError(this.handleError))
   }
 
   get(resource: any) {
@@ -37,6 +39,12 @@ export class HttpService {
 
   delete(resource: any) {
     return this.http.delete(this.baseUrl, resource).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  deleteUrl(url:string){
+    return this.http.delete(this.baseUrl+url).pipe(
       catchError(this.handleError)
     )
   }

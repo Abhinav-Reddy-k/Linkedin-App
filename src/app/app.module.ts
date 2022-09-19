@@ -22,6 +22,10 @@ import {AppErrorHandler} from "./common/app-error-handler";
 import {StoreModule} from '@ngrx/store';
 import {loginReducer} from "./login/login.reducer";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {MatCardModule} from "@angular/material/card";
+import { EducationComponent } from './education/education.component';
+import {educationReducer} from "./education/education.reducer";
+import { CertificationComponent } from './certification/certification.component';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AuthComponent
+    AuthComponent,
+    EducationComponent,
+    CertificationComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +52,9 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({login: loginReducer}),
+    StoreModule.forRoot({login: loginReducer,education:educationReducer}),
     StoreDevtoolsModule.instrument(),
+    MatCardModule,
   ],
   providers: [LoginService, {provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]

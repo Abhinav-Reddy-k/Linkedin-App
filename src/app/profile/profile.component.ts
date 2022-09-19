@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -7,14 +8,18 @@ import {Store} from "@ngrx/store";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile$:any;
-  constructor(private store:Store) {
+  profileObserver$:any;
+  profile:any;
+  constructor(private store:Store,private router: Router) {
     // @ts-ignore
-    this.profile$ = store.select((state) => state.login.data)
-    this.profile$.subscribe(console.log)
+    this.profileObserver$ = store.select((state) => state.login.data)
+    this.profileObserver$.subscribe((data:any) =>this.profile = data)
+    console.log(this.profile)
   }
   ngOnInit(): void {
-
+    if(!this.profile){
+      this.router.navigate([""])
+    }
   }
 
 }
