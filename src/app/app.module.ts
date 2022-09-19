@@ -26,6 +26,7 @@ import {MatCardModule} from "@angular/material/card";
 import { EducationComponent } from './education/education.component';
 import {educationReducer} from "./education/education.reducer";
 import { CertificationComponent } from './certification/certification.component';
+import {certificationReducer} from "./certification/certification.reducer";
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { CertificationComponent } from './certification/certification.component'
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({login: loginReducer,education:educationReducer}),
+    StoreModule.forRoot({login: loginReducer,education:educationReducer,certification:certificationReducer}),
     StoreDevtoolsModule.instrument(),
     MatCardModule,
   ],
