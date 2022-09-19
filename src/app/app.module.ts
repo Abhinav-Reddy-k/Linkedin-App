@@ -27,6 +27,8 @@ import { EducationComponent } from './education/education.component';
 import {educationReducer} from "./education/education.reducer";
 import { CertificationComponent } from './certification/certification.component';
 import {certificationReducer} from "./certification/certification.reducer";
+import { SkillComponent } from './skill/skill.component';
+import {skillReducer} from "./skill/skill.reducer";
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {certificationReducer} from "./certification/certification.reducer";
     ProfileComponent,
     AuthComponent,
     EducationComponent,
-    CertificationComponent
+    CertificationComponent,
+    SkillComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import {certificationReducer} from "./certification/certification.reducer";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({login: loginReducer,education:educationReducer,certification:certificationReducer}),
+    StoreModule.forRoot({login: loginReducer,education:educationReducer,certification:certificationReducer,skill:skillReducer}),
     StoreDevtoolsModule.instrument(),
     MatCardModule,
   ],
