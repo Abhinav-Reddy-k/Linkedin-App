@@ -33,7 +33,6 @@ export class CertificationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(p => this.id = p.get('id'));
-    console.log(this.id)
     // @ts-ignore
     this.profileObserver$ = this.store.select((state) => state.login.data)
     this.profileObserver$.subscribe((data:any) =>this.profile = data)
@@ -50,7 +49,6 @@ export class CertificationFormComponent implements OnInit {
   }
 
   onSubmit(data: any): void {
-    console.log(data)
     this.certificationService.updateCertification({...data,profileId:this.profile.id},parseInt(this.id)).subscribe({
       next:(edu)=>{
         this.router.navigate(['/profile'])

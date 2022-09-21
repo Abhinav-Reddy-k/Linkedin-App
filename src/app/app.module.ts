@@ -37,6 +37,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { ExperienceFormComponent } from './experience-form/experience-form.component';
 import { CertificationFormComponent } from './certification-form/certification-form.component';
+import { AddressComponent } from './address/address.component';
+import {addressReducer} from "./address/address.reducer";
+import { AddressFormComponent } from './address-form/address-form.component';
 
 
 @NgModule({
@@ -52,7 +55,9 @@ import { CertificationFormComponent } from './certification-form/certification-f
     ExperienceComponent,
     EducationFormComponent,
     ExperienceFormComponent,
-    CertificationFormComponent
+    CertificationFormComponent,
+    AddressComponent,
+    AddressFormComponent
   ],
   imports: [
     MatNativeDateModule,
@@ -74,7 +79,8 @@ import { CertificationFormComponent } from './certification-form/certification-f
       education: educationReducer,
       certification: certificationReducer,
       skill: skillReducer,
-      experience: experienceReducer
+      experience: experienceReducer,
+      address:addressReducer
     }),
     StoreDevtoolsModule.instrument(),
     MatCardModule,

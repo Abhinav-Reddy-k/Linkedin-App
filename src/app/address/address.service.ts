@@ -5,21 +5,21 @@ import {HttpService} from "../common/services/http.service";
 @Injectable({
   providedIn: 'root'
 })
-export class ExperienceService extends HttpService {
+export class AddressService extends HttpService {
 
   constructor(http: HttpClient) {
-    super( "http://localhost:8080/api/experience",http)
+    super( "http://localhost:8080/api/address",http)
   }
 
-  getProfileExperience(id:number){
+  getProfileAddress(id:number){
     return this.getAllUrl(`/profile/${id.toString()}`)
   }
 
-  deleteProfileExperience(id:number){
+  deleteProfileAddress(id:number){
     return this.deleteUrl(`/${id.toString()}`)
   }
 
-  updateExperience(resource: any, id:number) {
+  updateAddress(resource: any, id:number) {
     return super.updateUrl(resource, `/${id.toString()}`);
   }
 

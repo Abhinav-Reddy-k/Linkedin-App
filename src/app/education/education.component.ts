@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
 import {EducationService} from "./education.service";
-import {login} from "../login/login.actions";
 import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
 import {educationDeleted, educationDetailsLoaded} from "./education.actions";
@@ -41,11 +40,10 @@ export class EducationComponent implements OnInit {
     this.educationService.getProfileEducation(this.profile.id).subscribe({
         next: (edu) => {
           this.store.dispatch(educationDetailsLoaded({data: edu}))
-          console.log(this.education)
         },
         error: (err: AppError) => {
           if (err instanceof NotFoundError) {
-            console.log("BAd req")
+            console.log("Bad req")
           }
         }
       }

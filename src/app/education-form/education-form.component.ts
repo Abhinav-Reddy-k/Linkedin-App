@@ -41,7 +41,9 @@ export class EducationFormComponent implements OnInit {
       this.educationObserver$.subscribe((data: any) => this.education = data)
       this.formData = this.education.filter((e: { id: string | null | undefined; }) => e.id == this.id)[0]
     }
-    this.id=0
+    else{
+      this.id=0
+    }
   }
 
   onSubmit(data: any): void {

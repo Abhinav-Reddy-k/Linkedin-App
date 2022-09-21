@@ -35,7 +35,6 @@ export class ExperienceComponent implements OnInit {
     this.experienceService.getProfileExperience(this.profile.id).subscribe({
         next: (edu) => {
           this.store.dispatch(experienceDetailsLoaded({data: edu}))
-          console.log(this.experience)
         },
         error: (err: AppError) => {
           if (err instanceof NotFoundError) {

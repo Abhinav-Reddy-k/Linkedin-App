@@ -1,5 +1,7 @@
 <div class="center">
-<form #creds="ngForm" class="center" (ngSubmit)="onSubmit(creds)">
+  <div class="container center">
+    <div class="vertical-center">
+<form #creds="ngForm" class="center " (ngSubmit)="onSubmit(creds)">
 <mat-form-field appearance="fill">
   <mat-label>Email</mat-label>
   <input ngModel type="email" #email="ngModel" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required  matInput>
@@ -17,5 +19,6 @@
   <br>
 <button mat-raised-button color="primary" type="submit">Submit</button>
 </form>
-
+    </div>
+  </div>
 </div>

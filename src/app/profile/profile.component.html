@@ -1,24 +1,29 @@
 <div class="center">
   <h1>Profile</h1>
   <br>
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>{{profile.firstName | uppercase}}  {{profile.lastName | uppercase}} </mat-card-title>
-    <mat-card-subtitle>{{profile.headline}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image [src]="profile.imageUrl" alt="profile pic">
-  <mat-card-content>
-    <pre>
-      email : {{profile.email}}
-      phone : {{profile.phone}}
-    </pre>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+  <ul class="cards">
+    <li>
+      <a style="cursor: pointer" class="card">
+        <img src="https://i.imgur.com/oYiTqum.jpg" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <img class="card__thumb" [src]="profile.imageUrl" alt="" />
+            <div class="card__header-text">
+              <h3 class="card__title">{{profile.firstName | uppercase}}  {{profile.lastName | uppercase}}</h3>
+              <span class="card__status">{{profile.headline}}</span>
+            </div>
+          </div>
+          <p class="card__description">{{profile.email}}<br>{{profile.phone}}</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+
   <br>
+  <mat-divider></mat-divider>
+  <h1>Address<button mat-button routerLink="address/new">Add</button></h1>
+  <app-address></app-address>
   <br>
   <br>
   <mat-divider></mat-divider>
@@ -36,7 +41,9 @@
   <br>
   <br>
   <mat-divider></mat-divider>
-  <h1>Experience</h1>
+  <h1>Experience<button mat-button routerLink="experience/new">Add</button></h1>
   <br>
   <app-experience></app-experience>
 </div>
+
+

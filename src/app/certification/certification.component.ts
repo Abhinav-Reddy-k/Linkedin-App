@@ -39,7 +39,6 @@ export class CertificationComponent implements OnInit {
     this.certificationService.getProfileCertifications(this.profile.id).subscribe({
         next: (edu) => {
           this.store.dispatch(certificationDetailsLoaded({data: edu}))
-          console.log(this.certification)
         },
         error: (err: AppError) => {
           if (err instanceof NotFoundError) {
