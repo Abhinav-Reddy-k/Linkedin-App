@@ -35,6 +35,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import { EducationFormComponent } from './education-form/education-form.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { ExperienceFormComponent } from './experience-form/experience-form.component';
+import { CertificationFormComponent } from './certification-form/certification-form.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     CertificationComponent,
     SkillComponent,
     ExperienceComponent,
-    EducationFormComponent
+    EducationFormComponent,
+    ExperienceFormComponent,
+    CertificationFormComponent
   ],
   imports: [
     MatNativeDateModule,

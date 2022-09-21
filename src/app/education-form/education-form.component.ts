@@ -18,29 +18,37 @@ export class EducationFormComponent implements OnInit {
     startDate: "",
     endDate: "",
     description: "",
-    profileId: ""
+    profileId: "",
+
   }
   private education: any;
   private educationObserver$: any;
   private id: any;
+  private profileObserver$: any;
+  private profile: any;
 
   constructor(private store:Store,private route:ActivatedRoute,private educationService:EducationService,private router:Router) {
-    // @ts-ignore
-    this.educationObserver$ = store.select((state) => state.education.data)
-    this.educationObserver$.subscribe((data:any) =>this.education = data)
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(p => this.id = p.get('id'));
-    this.formData = this.education.filter((e: { id: string | null | undefined; }) => e.id == this.id)[0]
+    // @ts-ignore
+    this.profileObserver$ = this.store.select((state) => state.login.data)
+    this.profileObserver$.subscribe((data:any) =>this.profile = data)
+    if(this.id!="new") {
+      // @ts-ignore
+      this.educationObserver$ = this.store.select((state) => state.education.data)
+      this.educationObserver$.subscribe((data: any) => this.education = data)
+      this.formData = this.education.filter((e: { id: string | null | undefined; }) => e.id == this.id)[0]
+    }
+    this.id=0
   }
 
   onSubmit(data: any): void {
-    this.educationService.updateEducation(data,parseInt(this.id)).subscribe({
+    this.educationService.updateEducation({...data,profileId:this.profile.id},parseInt(this.id)).subscribe({
       next:(edu)=>{
         this.router.navigate(['/profile'])
       }
     })
   }
-
 }

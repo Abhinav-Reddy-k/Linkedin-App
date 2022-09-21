@@ -19,4 +19,8 @@ export class CertificationService extends HttpService {
     return this.deleteUrl(`/${id.toString()}`)
   }
 
+  updateCertification(resource: any, id:number) {
+    return super.updateUrl(resource, `/${id.toString()}`);
+  }
+
 }

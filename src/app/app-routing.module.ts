@@ -6,6 +6,8 @@ import {AuthComponent} from "./auth/auth.component";
 import {RegisterComponent} from "./register/register.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {EducationFormComponent} from "./education-form/education-form.component";
+import {ExperienceFormComponent} from "./experience-form/experience-form.component";
+import {CertificationFormComponent} from "./certification-form/certification-form.component";
 
 const routes: Routes = [
   {path: "", redirectTo:"auth/login",pathMatch:"full"},
@@ -24,8 +26,9 @@ const routes: Routes = [
       },
     ],
   },
-
   {path:"profile/education/:id",component:EducationFormComponent},
+  {path:"profile/certification/:id",component:CertificationFormComponent},
+  {path:"profile/experience/:id",component:ExperienceFormComponent},
   {path:"profile",component:ProfileComponent}
 ];
 

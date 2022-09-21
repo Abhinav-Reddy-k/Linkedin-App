@@ -13,7 +13,7 @@
     </pre>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Edit</button>
+      <button mat-button [routerLink]="'certification/'+certificate.id">Edit</button>
       <button mat-button (click)="onCertificateDelete(certificate.id)">Delete</button>
     </mat-card-actions>
   </mat-card>
