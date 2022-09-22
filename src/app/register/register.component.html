@@ -1,68 +1,72 @@
 <div class="center">
   <div class="container center">
     <div class="vertical-center">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <h1>Registration Form</h1>
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input formControlName="firstName" matInput>
-      <mat-error *ngIf="!form.get('firstName')!.value">First name is required</mat-error>
-    </mat-form-field>
+      <mat-card>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <h1>Registration Form</h1>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstName" matInput>
+            <mat-error *ngIf="!form.get('firstName')!.value">First name is required</mat-error>
+          </mat-form-field>
 
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Image Url</mat-label>
-      <input formControlName="imageUrl" matInput>
-      <mat-error *ngIf="!form.get('imageUrl')!.value">imageUrl is required</mat-error>
-    </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Image Url</mat-label>
+            <input formControlName="imageUrl" matInput>
+            <mat-error *ngIf="!form.get('imageUrl')!.value">imageUrl is required</mat-error>
+          </mat-form-field>
 
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input formControlName="lastName" matInput>
-      <mat-error *ngIf="!form.get('lastName')!.value">Last name is required</mat-error>
-    </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastName" matInput>
+            <mat-error *ngIf="!form.get('lastName')!.value">Last name is required</mat-error>
+          </mat-form-field>
 
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Phone</mat-label>
-      <input formControlName="phone" matInput>
-      <mat-error *ngIf="!form.get('phone')!.value">Phone is required</mat-error>
-    </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone</mat-label>
+            <input formControlName="phone" matInput>
+            <mat-error *ngIf="!form.get('phone')!.value">Phone is required</mat-error>
+          </mat-form-field>
 
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input formControlName="email" matInput>
-      <mat-error *ngIf="!form.get('email')!.value">Email is required</mat-error>
-      <mat-error *ngIf="form.get('email')!.value && !form.get('email')!.valid">Enter valid email</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input formControlName="password" matInput type="password" (input)="onPasswordInput()">
-      <mat-error *ngIf="!form.get('password')!.value">Password is required</mat-error>
-      <mat-error *ngIf="form.get('password')!.value && !form.get('password')!.valid">Min length must be 10</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Confirm Password</mat-label>
-      <input formControlName="confirm_password" matInput type="password" required (input)="onPasswordInput()">
-      <mat-error *ngIf="confirm_password!.invalid && !confirm_password!.hasError('required')">Password not matched.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Gender</mat-label>
-      <select formControlName="pronounId" matNativeControl required>
-        <option value=1>Male</option>
-        <option value=2>Female</option>
-      </select>
-    </mat-form-field>
-    <br>
-    <br>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
-  </form>
-</div>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput>
+            <mat-error *ngIf="!form.get('email')!.value">Email is required</mat-error>
+            <mat-error *ngIf="form.get('email')!.value && !form.get('email')!.valid">Enter valid email</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput type="password" (input)="onPasswordInput()">
+            <mat-error *ngIf="!form.get('password')!.value">Password is required</mat-error>
+            <mat-error *ngIf="form.get('password')!.value && !form.get('password')!.valid">Min length must be 10
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input formControlName="confirm_password" matInput type="password" required (input)="onPasswordInput()">
+            <mat-error *ngIf="confirm_password!.invalid && !confirm_password!.hasError('required')">Password not
+              matched.
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <select formControlName="pronounId" matNativeControl required>
+              <option value=1>Male</option>
+              <option value=2>Female</option>
+            </select>
+          </mat-form-field>
+          <br>
+          <br>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </form>
+      </mat-card>
+    </div>
   </div>
 </div>

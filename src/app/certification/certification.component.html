@@ -4,9 +4,9 @@
     <h3>{{certificate.name | uppercase}}</h3>
     <h4>{{certificate.issuingOrganisation}}</h4>
     <p>credentialId : {{certificate.credentialId}}<br>
-      credentialUrl : {{certificate.credentialUrl}}<br>
-      issueDate : {{certificate.issueDate | date}}<br>
-      expirationDate : {{certificate.expirationDate | date}}<br>
+      Credential Url : {{certificate.credentialUrl}}<br>
+      Issue Date : {{certificate.issueDate | date}}<br>
+      Expiration Date : {{certificate.expirationDate | date}}<br>
     </p>
     <span [routerLink]="'certification/'+certificate.id" class="link-text pointer">
       Edit

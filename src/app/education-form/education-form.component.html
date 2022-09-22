@@ -2,6 +2,7 @@
 
   <div class="container center">
     <div class="vertical-center">
+      <mat-card>
   <form #edu="ngForm"  (ngSubmit)="onSubmit(edu.value)" >
     <h1>Education Edit Form</h1>
 
@@ -12,31 +13,31 @@
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>degree</mat-label>
+      <mat-label>Degree</mat-label>
       <input ngModel  #degree="ngModel" name="degree" [ngModel]="formData.degree" required  matInput>
       <mat-error *ngIf="!degree.value">degree is required</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>grade</mat-label>
+      <mat-label>Grade</mat-label>
       <input ngModel [ngModel]="formData.grade" #grade="ngModel" name="grade" required  matInput>
       <mat-error *ngIf="!grade.value">grade is required</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>fieldOfStudy</mat-label>
+      <mat-label>Field of Study</mat-label>
       <input ngModel [ngModel]="formData.fieldOfStudy" #fieldOfStudy="ngModel" name="fieldOfStudy" required  matInput>
       <mat-error *ngIf="!fieldOfStudy.value">fieldOfStudy is required</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>description</mat-label>
+      <mat-label>Description</mat-label>
       <input ngModel [ngModel]="formData.description"  #description="ngModel" name="description" required  matInput>
       <mat-error *ngIf="!description.value">description is required</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>startDate</mat-label>
+      <mat-label>Start Date</mat-label>
       <input ngModel #startDate="ngModel" [ngModel]="formData.startDate" matInput [matDatepicker]="picker" name="startDate">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -44,7 +45,7 @@
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>endDate</mat-label>
+      <mat-label>End Date</mat-label>
       <input ngModel #endDate="ngModel" [ngModel]="formData.endDate" matInput [matDatepicker]="picker2" name="endDate">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -54,6 +55,7 @@
     <br>
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
+      </mat-card>
 </div>
   </div>
 </div>

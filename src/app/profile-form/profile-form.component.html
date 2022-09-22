@@ -1,34 +1,36 @@
 <div class="center">
   <div class="container center">
     <div class="vertical-center">
+      <mat-card>
+
       <form #edu="ngForm" (ngSubmit)="onSubmit(edu.value)" >
         <h1>Profile Form</h1>
         <mat-form-field appearance="fill">
-          <mat-label>firstName</mat-label>
+          <mat-label>First Name</mat-label>
           <input  ngModel #firstName="ngModel" name="firstName" required [ngModel]="formData.firstName"  matInput>
           <mat-error *ngIf="!firstName.value">firstName is required</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-          <mat-label>lastName</mat-label>
+          <mat-label>Last Name</mat-label>
           <input ngModel  #lastName="ngModel" name="lastName" [ngModel]="formData.lastName" required  matInput>
           <mat-error *ngIf="!lastName.value">lastName is required</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-          <mat-label>headline</mat-label>
+          <mat-label>Headline</mat-label>
           <input ngModel [ngModel]="formData.headline" #headline="ngModel" name="headline" required  matInput>
           <mat-error *ngIf="!headline.value">headline is required</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-          <mat-label>imageUrl</mat-label>
+          <mat-label>ImageUrl</mat-label>
           <input ngModel [ngModel]="formData.imageUrl" #imageUrl="ngModel" name="imageUrl" required  matInput>
           <mat-error *ngIf="!imageUrl.value">imageUrl is required</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-          <mat-label>phone</mat-label>
+          <mat-label>Phone</mat-label>
           <input ngModel [ngModel]="formData.phone"  #phone="ngModel" name="phone" required  matInput>
           <mat-error *ngIf="!phone.value">phone is required</mat-error>
         </mat-form-field>
@@ -36,6 +38,7 @@
 
         <button mat-raised-button color="primary" type="submit">Submit</button>
       </form>
+      </mat-card>
     </div>
   </div>
 </div>
