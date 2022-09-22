@@ -8,6 +8,8 @@ import {EducationFormComponent} from "./education-form/education-form.component"
 import {ExperienceFormComponent} from "./experience-form/experience-form.component";
 import {CertificationFormComponent} from "./certification-form/certification-form.component";
 import {AddressFormComponent} from "./address-form/address-form.component";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {ProfileFormComponent} from "./profile-form/profile-form.component";
 
 const routes: Routes = [
   {path: "", redirectTo:"auth/login",pathMatch:"full"},
@@ -26,11 +28,13 @@ const routes: Routes = [
       },
     ],
   },
+  {path:"profile/edit",component:ProfileFormComponent},
   {path:"profile/address/:id",component:AddressFormComponent},
   {path:"profile/education/:id",component:EducationFormComponent},
   {path:"profile/certification/:id",component:CertificationFormComponent},
   {path:"profile/experience/:id",component:ExperienceFormComponent},
-  {path:"profile",component:ProfileComponent}
+  {path:"profile",component:ProfileComponent},
+  {path:"**",component:PageNotFoundComponent}
 ];
 
 @NgModule({

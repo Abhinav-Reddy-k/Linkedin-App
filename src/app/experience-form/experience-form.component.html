@@ -1,22 +1,25 @@
 <div class="center">
   <div class="container center">
+
     <div class="vertical-center">
-  <form #edu="ngForm" class="center" (ngSubmit)="onSubmit(edu.value)" >
-    <mat-form-field appearance="fill">
-      <mat-label>companyName</mat-label>
-      <input  ngModel #companyName="ngModel" name="companyName" required [ngModel]="formData.companyName"  matInput>
-      <mat-error *ngIf="!companyName.value">companyName is required</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>jobRole</mat-label>
-      <input ngModel  #jobRole="ngModel" name="jobRole" [ngModel]="formData.jobRole" required  matInput>
-      <mat-error *ngIf="!jobRole.value">jobRole is required</mat-error>
-    </mat-form-field>
-    <br>
-    <br>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
-  </form>
-</div>
+      <form #edu="ngForm" (ngSubmit)="onSubmit(edu.value)">
+        <h1>Experience Form</h1>
+
+        <mat-form-field appearance="fill">
+          <mat-label>companyName</mat-label>
+          <input ngModel #companyName="ngModel" name="companyName" required [ngModel]="formData.companyName" matInput>
+          <mat-error *ngIf="!companyName.value">companyName is required</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>jobRole</mat-label>
+          <input ngModel #jobRole="ngModel" name="jobRole" [ngModel]="formData.jobRole" required matInput>
+          <mat-error *ngIf="!jobRole.value">jobRole is required</mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </form>
+    </div>
   </div>
 </div>

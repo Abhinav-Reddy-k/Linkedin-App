@@ -1,47 +1,75 @@
 <div class="center">
   <h1>Profile</h1>
-  <br>
   <ul class="cards">
     <li>
       <a style="cursor: pointer" class="card">
-        <img src="https://i.imgur.com/oYiTqum.jpg" class="card__image" alt="" />
+        <img src="https://i.imgur.com/oYiTqum.jpg" class="card__image" alt=""/>
         <div class="card__overlay">
           <div class="card__header">
-            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-            <img class="card__thumb" [src]="profile.imageUrl" alt="" />
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+              <path/>
+            </svg>
+            <img class="card__thumb" [src]="profile.imageUrl" alt=""/>
             <div class="card__header-text">
               <h3 class="card__title">{{profile.firstName | uppercase}}  {{profile.lastName | uppercase}}</h3>
               <span class="card__status">{{profile.headline}}</span>
             </div>
           </div>
-          <p class="card__description">{{profile.email}}<br>{{profile.phone}}</p>
+          <p class="card__description">{{profile.email}}<br>{{profile.phone}}<br>
+            <button style="float: right" mat-raised-button color="primary" routerLink="/profile/edit" type="submit">Edit</button>
+          </p>
         </div>
       </a>
     </li>
+    <h1></h1>
+
   </ul>
 
   <br>
   <mat-divider></mat-divider>
-  <h1>Address<button mat-button routerLink="address/new">Add</button></h1>
+  <br>
+
+  <h1 style="float: left">Address</h1>
+  <button style="float: right" mat-raised-button color="primary" routerLink="address/new">Add</button>
+  <br>
+  <br>
+
   <app-address></app-address>
   <br>
   <br>
   <mat-divider></mat-divider>
-  <h1>Education<button mat-button routerLink="education/new">Add</button></h1>
   <br>
+
+  <h1 style="float: left">Education
+
+  </h1>
+  <button style="float: right" mat-raised-button color="primary" routerLink="education/new">Add</button>
+  <br>
+  <br>
+
   <app-education></app-education>
   <br>
   <br>
   <br>
   <mat-divider></mat-divider>
-  <h1>Certification<button mat-button routerLink="certification/new">Add</button></h1>
+  <br>
+
+  <h1 style="float: left">Certification
+
+  </h1>
+  <button style="float: right" mat-raised-button color="primary" routerLink="certification/new">Add</button>
   <br>
   <app-certification></app-certification>
   <br>
   <br>
   <br>
   <mat-divider></mat-divider>
-  <h1>Experience<button mat-button routerLink="experience/new">Add</button></h1>
+  <br>
+
+  <h1 style="float: left">Experience
+
+  </h1>
+  <button style="float: right" mat-raised-button color="primary" routerLink="experience/new">Add</button>
   <br>
   <app-experience></app-experience>
 </div>

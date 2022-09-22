@@ -1,1 +1,11 @@
+<mat-toolbar color="primary">
+  <span>Linkedin</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <button *ngIf="!profile" mat-raised-button routerLink="/auth/login" class="space" >Login</button>
+  <button *ngIf="!profile" mat-raised-button routerLink="/auth/register" class="space">Register</button>
+  <button *ngIf="profile" mat-raised-button  style="float: right" (click)="reloadPage()"  type="submit">Logout</button>
+</mat-toolbar>
 <router-outlet></router-outlet>

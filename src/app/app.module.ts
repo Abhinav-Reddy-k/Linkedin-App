@@ -40,6 +40,9 @@ import { CertificationFormComponent } from './certification-form/certification-f
 import { AddressComponent } from './address/address.component';
 import {addressReducer} from "./address/address.reducer";
 import { AddressFormComponent } from './address-form/address-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 
 @NgModule({
@@ -57,9 +60,13 @@ import { AddressFormComponent } from './address-form/address-form.component';
     ExperienceFormComponent,
     CertificationFormComponent,
     AddressComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    PageNotFoundComponent,
+    ProfileFormComponent
   ],
   imports: [
+
+    MatSnackBarModule,
     MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,

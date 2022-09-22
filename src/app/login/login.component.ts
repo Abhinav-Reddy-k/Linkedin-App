@@ -6,13 +6,14 @@ import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
 import { Store } from '@ngrx/store';
 import {login} from "./login.actions";
+import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router,private store:Store) {
+  constructor(private loginService: LoginService, private router: Router,private store:Store,private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
       },
       error:(err:AppError)=>{
         if(err instanceof NotFoundError){
-          console.log("User Not Found")
+          this._snackBar.open("User Not Found with the email pass combination", "close");
         }
     }
     });

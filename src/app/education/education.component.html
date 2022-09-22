@@ -1,12 +1,11 @@
-
-<section class="page-contain">
+<div class="grid-container">
 <div *ngFor="let edu of education ">
   <a  class="data-card">
     <h3>{{edu.degree | uppercase}}</h3>
-    <h4>{{edu.description}}</h4>
+    <h4>{{edu.school}}</h4>
     <p>Grade : {{edu.grade}}<br>
     Field Of Study : {{edu.fieldOfStudy}}<br>
-    School : {{edu.school}}<br>
+    School : {{edu.description}}<br>
     Start Date : {{edu.startDate | date}}<br>
     End Date : {{edu.endDate | date}}<br>
     </p>
@@ -25,4 +24,4 @@
   </a>
   <br>
 </div>
-</section>
+</div>
