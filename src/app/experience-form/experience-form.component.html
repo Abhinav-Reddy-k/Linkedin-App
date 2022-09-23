@@ -5,7 +5,6 @@
       <mat-card>
       <form #edu="ngForm" (ngSubmit)="onSubmit(edu.value)">
         <h1>Experience Form</h1>
-
         <mat-form-field appearance="fill">
           <mat-label>Company Name</mat-label>
           <input ngModel #companyName="ngModel" name="companyName" required [ngModel]="formData.companyName" matInput>

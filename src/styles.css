@@ -235,11 +235,11 @@ body {
   transform: none;
 }
 .data-card:hover .link-text {
-  color: #FFFFFF;
+  color: palegoldenrod;
 }
 .data-card:hover .link-text svg {
-  -webkit-animation: point 1.25s infinite alternate;
-  animation: point 1.25s infinite alternate;
+  -webkit-animation: point 0.5s infinite alternate;
+  animation: point 0.5s infinite alternate;
 }
 .data-card:hover .link-text svg path {
   fill: #FFFFFF;

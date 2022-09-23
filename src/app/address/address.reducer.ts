@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { addressDetailsLoaded,addressDeleted } from './address.actions';
 
+export interface AddressState{}
+
 export const initialState = {data:[]};
 
 // @ts-ignore

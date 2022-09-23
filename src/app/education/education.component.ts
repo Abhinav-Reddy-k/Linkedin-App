@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {EducationService} from "./education.service";
 import {AppError} from "../common/errors/app-error";
@@ -23,13 +23,12 @@ export class EducationComponent implements OnInit {
     description: "",
     profileId: ""
   }]
-  profileObserver$:any;
-  profile:any;
+
+  @Input() profileId: any;
 
   constructor(private store:Store,private educationService:EducationService) {
     // @ts-ignore
-    this.profileObserver$ = store.select((state) => state.login.data)
-    this.profileObserver$.subscribe((data:any) =>this.profile = data)
+
 
     // @ts-ignore
     this.educationObserver$ = store.select((state) => state.education.data)
@@ -37,7 +36,7 @@ export class EducationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.educationService.getProfileEducation(this.profile.id).subscribe({
+    this.educationService.getProfileEducation(this.profileId).subscribe({
         next: (edu) => {
           this.store.dispatch(educationDetailsLoaded({data: edu}))
         },

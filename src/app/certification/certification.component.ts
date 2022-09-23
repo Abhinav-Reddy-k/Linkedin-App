@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
@@ -22,13 +22,12 @@ export class CertificationComponent implements OnInit {
     expirationDate: "",
     profileId: ""
   }]
-  profileObserver$:any;
-  profile:any;
+
+  @Input() profileId:any;
+
 
   constructor(private store:Store,private certificationService:CertificationService) {
-    // @ts-ignore
-    this.profileObserver$ = store.select((state) => state.login.data)
-    this.profileObserver$.subscribe((data:any) =>this.profile = data)
+
 
     // @ts-ignore
     this.certificationObserver$ = store.select((state) => state.certification.data)
@@ -36,7 +35,7 @@ export class CertificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.certificationService.getProfileCertifications(this.profile.id).subscribe({
+    this.certificationService.getProfileCertifications(this.profileId).subscribe({
         next: (edu) => {
           this.store.dispatch(certificationDetailsLoaded({data: edu}))
         },

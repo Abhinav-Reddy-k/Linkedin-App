@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
     // @ts-ignore
     this.profileObserver$ = store.select((state) => state.login.data)
     this.profileObserver$.subscribe((data:any) =>this.profile = data)
-    console.log(this.profile)
   }
   ngOnInit(): void {
     if(!this.profile){

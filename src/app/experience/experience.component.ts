@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
@@ -18,13 +18,11 @@ export class ExperienceComponent implements OnInit {
     jobRole: "",
     profileId: ""
   }]
-  profileObserver$:any;
-  profile:any;
+  @Input() profileId:any;
+
 
   constructor(private store:Store,private experienceService:ExperienceService) {
-    // @ts-ignore
-    this.profileObserver$ = store.select((state) => state.login.data)
-    this.profileObserver$.subscribe((data:any) =>this.profile = data)
+
 
     // @ts-ignore
     this.experienceObserver$ = store.select((state) => state.experience.data)
@@ -32,7 +30,7 @@ export class ExperienceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.experienceService.getProfileExperience(this.profile.id).subscribe({
+    this.experienceService.getProfileExperience(this.profileId).subscribe({
         next: (edu) => {
           this.store.dispatch(experienceDetailsLoaded({data: edu}))
         },

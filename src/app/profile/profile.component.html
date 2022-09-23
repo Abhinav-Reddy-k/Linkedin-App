@@ -34,7 +34,7 @@
   <br>
   <br>
 
-  <app-address></app-address>
+  <app-address [profileId]="profile.id"></app-address>
   <br>
   <br>
   <mat-divider></mat-divider>
@@ -47,7 +47,7 @@
   <br>
   <br>
 
-  <app-education></app-education>
+  <app-education [profileId]="profile.id"></app-education>
   <br>
   <br>
   <br>
@@ -59,7 +59,7 @@
   </h1>
   <button style="float: right" mat-raised-button color="primary" routerLink="certification/new">Add</button>
   <br>
-  <app-certification></app-certification>
+  <app-certification [profileId]="profile.id"></app-certification>
   <br>
   <br>
   <br>
@@ -71,7 +71,7 @@
   </h1>
   <button style="float: right" mat-raised-button color="primary" routerLink="experience/new">Add</button>
   <br>
-  <app-experience></app-experience>
+  <app-experience [profileId]="profile.id"></app-experience>
 </div>
 
 
