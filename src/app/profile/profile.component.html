@@ -9,14 +9,18 @@
             <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
               <path/>
             </svg>
-            <img class="card__thumb" [src]="profile.imageUrl" alt=""/>
+            <img class="card__thumb" [src]="profile.imageUrl"
+                 alt="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
             <div class="card__header-text">
-              <h3 class="card__title">{{profile.firstName | uppercase}}  {{profile.lastName | uppercase}}</h3>
+              <h5 class="card__title">{{profile.firstName | uppercase}}  {{profile.lastName | uppercase}}
+                ({{profile.pronounId ? "Him/He" : "Her/She"}})</h5>
               <span class="card__status">{{profile.headline}}</span>
             </div>
           </div>
           <p class="card__description">{{profile.email}}<br>{{profile.phone}}<br>
-            <button style="float: right" mat-raised-button color="primary" routerLink="/profile/edit" type="submit">Edit</button>
+            <button style="float: right" mat-raised-button color="primary" routerLink="/profile/edit" type="submit">
+              Edit
+            </button>
           </p>
         </div>
       </a>
@@ -72,6 +76,7 @@
   <button style="float: right" mat-raised-button color="primary" routerLink="experience/new">Add</button>
   <br>
   <app-experience [profileId]="profile.id"></app-experience>
+  <app-skill></app-skill>
 </div>
 
 

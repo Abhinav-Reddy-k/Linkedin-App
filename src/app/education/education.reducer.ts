@@ -1,16 +1,19 @@
-import { createReducer, on } from '@ngrx/store';
-import { educationDetailsLoaded,educationDeleted } from './education.actions';
+import {createReducer, on} from '@ngrx/store';
+import {educationDetailsLoaded, educationDeleted} from './education.actions';
+import {EducationModel} from "../shared/education.model";
 
-export const initialState = {data:[]};
+export interface EducationState {
+  data: EducationModel[]
+}
 
-// @ts-ignore
+export const initialState: EducationState = {data: []};
+
 export const educationReducer = createReducer(
   initialState,
-  on(educationDetailsLoaded, (state,payload) => state=payload),
-  on(educationDeleted,(state,payload) => {
-    // @ts-ignore
+  on(educationDetailsLoaded, (state, payload) => state = payload),
+  on(educationDeleted, (state, payload) => {
     let data = [...state.data].filter(e => e.id != payload.id)
-    state = {...state,data}
+    state = {...state, data}
     return state
   })
 );

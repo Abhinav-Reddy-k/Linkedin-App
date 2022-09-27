@@ -4,6 +4,7 @@ import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
 import {CertificationService} from "./certification.service";
 import {certificationDeleted, certificationDetailsLoaded} from "./certification.actions";
+import {CertificatationModel} from "../shared/certificatation.model";
 
 @Component({
   selector: 'app-certification',
@@ -11,47 +12,47 @@ import {certificationDeleted, certificationDetailsLoaded} from "./certification.
   styleUrls: ['./certification.component.css']
 })
 export class CertificationComponent implements OnInit {
-  certificationObserver$:any;
-  certification=[{
-    id: "",
+  certificationObserver$: any;
+  certification: CertificatationModel[] = [{
+    id: 0,
     name: "",
     issuingOrganisation: "",
     credentialUrl: "",
     credentialId: "",
     issueDate: "",
     expirationDate: "",
-    profileId: ""
+    profileId: 0
   }]
 
-  @Input() profileId:any;
+  @Input() profileId: any;
 
 
-  constructor(private store:Store,private certificationService:CertificationService) {
+  constructor(private store: Store, private certificationService: CertificationService) {
 
 
     // @ts-ignore
     this.certificationObserver$ = store.select((state) => state.certification.data)
-    this.certificationObserver$.subscribe((data:any) =>this.certification = data)
+    this.certificationObserver$.subscribe((data: CertificatationModel[]) => this.certification = data)
   }
 
   ngOnInit(): void {
     this.certificationService.getProfileCertifications(this.profileId).subscribe({
-        next: (edu) => {
-          this.store.dispatch(certificationDetailsLoaded({data: edu}))
+        next: (certifications) => {
+          this.store.dispatch(certificationDetailsLoaded({data: certifications as CertificatationModel[]}))
         },
         error: (err: AppError) => {
           if (err instanceof NotFoundError) {
-            console.log("BAd req")
+            console.log("Bad request")
           }
         }
       }
     )
   }
 
-  onCertificateDelete(id: string){
-    this.certificationService.deleteProfileCertifications(parseInt(id)).subscribe({
-      next:()=>{
-        this.store.dispatch(certificationDeleted({id:parseInt(id)}))
+  onCertificateDelete(id: number) {
+    this.certificationService.deleteProfileCertifications(id).subscribe({
+      next: () => {
+        this.store.dispatch(certificationDeleted({id: id}))
       }
     })
   }

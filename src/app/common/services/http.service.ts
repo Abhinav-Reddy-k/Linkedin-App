@@ -19,8 +19,8 @@ export class HttpService {
     return this.http.get(this.baseUrl+url).pipe(catchError(this.handleError))
   }
 
-  get(resource: any) {
-    return this.http.get(this.baseUrl, resource).pipe(
+  get() {
+    return this.http.get(this.baseUrl).pipe(
       catchError(this.handleError)
     )
   }

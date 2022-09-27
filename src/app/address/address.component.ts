@@ -4,6 +4,7 @@ import {AddressService} from "./address.service";
 import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
 import {addressDeleted, addressDetailsLoaded} from "./address.actions";
+import {AddressModel} from "../shared/address.model";
 
 @Component({
   selector: 'app-address',
@@ -13,30 +14,30 @@ import {addressDeleted, addressDetailsLoaded} from "./address.actions";
 export class AddressComponent implements OnInit {
 
   private addressObserver$: any;
-  address=[{
+  address: AddressModel[] = [{
     hNo: "",
     colony: "",
     state: "",
     country: "",
     locality: "",
     city: "",
-    id: "",
-    profileId: ""
+    id: 0,
+    profileId: 0
   }];
 
-  @Input() profileId:any;
+  @Input() profileId: any;
 
-  constructor(private store:Store,private addressService:AddressService) {
+  constructor(private store: Store, private addressService: AddressService) {
 
     // @ts-ignore
     this.addressObserver$ = store.select((state) => state.address.data)
-    this.addressObserver$.subscribe((data:any) =>this.address = data)
+    this.addressObserver$.subscribe((data: AddressModel[]) => this.address = data)
   }
 
   ngOnInit(): void {
     this.addressService.getProfileAddress(this.profileId).subscribe({
-        next: (edu) => {
-          this.store.dispatch(addressDetailsLoaded({data: edu}))
+        next: (add) => {
+          this.store.dispatch(addressDetailsLoaded({data: add as AddressModel[]}))
         },
         error: (err: AppError) => {
           if (err instanceof NotFoundError) {
@@ -47,10 +48,10 @@ export class AddressComponent implements OnInit {
     )
   }
 
-  onAddressDelete(id: string) {
-    this.addressService.deleteProfileAddress(parseInt(id)).subscribe({
-      next:()=>{
-        this.store.dispatch(addressDeleted({id:parseInt(id)}))
+  onAddressDelete(id: number) {
+    this.addressService.deleteProfileAddress(id).subscribe({
+      next: () => {
+        this.store.dispatch(addressDeleted({id: id}))
       }
     })
 

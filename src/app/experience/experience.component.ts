@@ -4,6 +4,7 @@ import {AppError} from "../common/errors/app-error";
 import {NotFoundError} from "../common/errors/not-found-error";
 import {ExperienceService} from "./experience.service";
 import {experienceDeleted, experienceDetailsLoaded} from "./experience.actions";
+import {ExperienceModel} from "../shared/experience.model";
 
 @Component({
   selector: 'app-experience',
@@ -11,42 +12,42 @@ import {experienceDeleted, experienceDetailsLoaded} from "./experience.actions";
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
-  experienceObserver$:any;
-  experience=[{
-    id: "",
+  experienceObserver$: any;
+  experience: ExperienceModel[] = [{
+    id: 0,
     companyName: "",
     jobRole: "",
-    profileId: ""
+    profileId: 0
   }]
-  @Input() profileId:any;
+  @Input() profileId: any;
 
 
-  constructor(private store:Store,private experienceService:ExperienceService) {
+  constructor(private store: Store, private experienceService: ExperienceService) {
 
 
     // @ts-ignore
     this.experienceObserver$ = store.select((state) => state.experience.data)
-    this.experienceObserver$.subscribe((data:any) =>this.experience = data)
+    this.experienceObserver$.subscribe((data: ExperienceModel[]) => this.experience = data)
   }
 
   ngOnInit(): void {
     this.experienceService.getProfileExperience(this.profileId).subscribe({
-        next: (edu) => {
-          this.store.dispatch(experienceDetailsLoaded({data: edu}))
+        next: (experience) => {
+          this.store.dispatch(experienceDetailsLoaded({data: experience as ExperienceModel[]}))
         },
         error: (err: AppError) => {
           if (err instanceof NotFoundError) {
-            console.log("BAd req")
+            console.log("Bad request")
           }
         }
       }
     )
   }
 
-  onExperienceDelete(id: string){
-    this.experienceService.deleteProfileExperience(parseInt(id)).subscribe({
-      next:()=>{
-        this.store.dispatch(experienceDeleted({id:parseInt(id)}))
+  onExperienceDelete(id: number) {
+    this.experienceService.deleteProfileExperience(id).subscribe({
+      next: () => {
+        this.store.dispatch(experienceDeleted({id: id}))
       }
     })
   }

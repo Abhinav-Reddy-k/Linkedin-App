@@ -7,6 +7,7 @@ import {NotFoundError} from "../common/errors/not-found-error";
 import { Store } from '@ngrx/store';
 import {login} from "./login.actions";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ProfileModel} from "../shared/profile.model";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,8 +26,10 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.create(creds.value).subscribe({
       next: (profile) => {
-        this.store.dispatch(login({data:profile}))
+        this.store.dispatch(login({data:profile as ProfileModel}))
         this.router.navigate(["/profile"])
+        // @ts-ignore
+        localStorage.setItem("id",`${profile.id}`)
       },
       error:(err:AppError)=>{
         if(err instanceof NotFoundError){

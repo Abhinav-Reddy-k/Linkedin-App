@@ -11,6 +11,10 @@ export class ProfileService extends HttpService {
     super( "http://localhost:8080/api/profiles",http)
   }
 
+  getProfile(id:number){
+    return super.getAllUrl(`/${id.toString()}`)
+  }
+
 
   updateProfile(resource: any, id:number) {
     return super.updateUrl(resource, `/${id.toString()}`);
