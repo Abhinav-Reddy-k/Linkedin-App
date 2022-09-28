@@ -1,9 +1,9 @@
-import {createFeatureSelector, createSelector} from '@ngrx/store';
+import { createSelector} from '@ngrx/store';
 import {AppState} from "../shared/app.state";
 
-export const getProfileState = createFeatureSelector<AppState>('login');
+export const getProfileState = (state:AppState) => state.login;
 
 export const getProfile = createSelector(
   getProfileState,
-  (state: AppState) => state.login.data
+  (state) => state.data
 );

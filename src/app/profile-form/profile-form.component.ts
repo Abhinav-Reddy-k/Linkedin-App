@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../profile/profile.service";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
+import {NgForm} from "@angular/forms";
+import {ProfileModel} from "../shared/profile.model";
 
 @Component({
   selector: 'app-profile-form',
@@ -10,7 +12,8 @@ import {Store} from "@ngrx/store";
 })
 export class ProfileFormComponent implements OnInit {
 
-  formData = {
+  formData: ProfileModel = {
+    id: 0, pronounId: 0,
     firstName: "",
     lastName: "",
     headline: "",
@@ -27,7 +30,6 @@ export class ProfileFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // @ts-ignore
     this.profileObserver$ = this.store.select((state) => state.login.data)
     this.profileObserver$.subscribe((data: any) => {
@@ -36,9 +38,12 @@ export class ProfileFormComponent implements OnInit {
     })
   }
 
-  onSubmit(data: any) {
+  onSubmit(data: NgForm) {
+    if (!data.valid) {
+      return
+    }
     this.profileService.updateProfile({
-      ...data,
+      ...data.value,
       email: this.formData.email,
       password: this.formData.password
     }, parseInt(this.profile.id)).subscribe({

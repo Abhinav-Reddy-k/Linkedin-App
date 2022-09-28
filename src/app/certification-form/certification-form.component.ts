@@ -3,6 +3,7 @@ import {Store} from "@ngrx/store";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EducationService} from "../education/education.service";
 import {CertificationService} from "../certification/certification.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-certification-form',
@@ -26,16 +27,15 @@ export class CertificationFormComponent implements OnInit {
   private certificationObserver$: any;
   private id: any;
   private profileObserver$: any;
-  private profile: any;
+  private profileId: any;
 
   constructor(private store:Store,private route:ActivatedRoute,private router:Router,private certificationService:CertificationService) {
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(p => this.id = p.get('id'));
-    // @ts-ignore
-    this.profileObserver$ = this.store.select((state) => state.login.data)
-    this.profileObserver$.subscribe((data:any) =>this.profile = data)
+    this.profileId = window.localStorage.getItem('id');
+
     if(this.id!="new") {
       // @ts-ignore
       this.certificationObserver$ = this.store.select((state) => state.certification.data)
@@ -48,8 +48,11 @@ export class CertificationFormComponent implements OnInit {
     }
   }
 
-  onSubmit(data: any): void {
-    this.certificationService.updateCertification({...data,profileId:this.profile.id},parseInt(this.id)).subscribe({
+  onSubmit(data: NgForm): void {
+    if (!data.valid) {
+      return
+    }
+    this.certificationService.updateCertification({...data.value,profileId:this.profileId},parseInt(this.id)).subscribe({
       next:(edu)=>{
         this.router.navigate(['/profile'])
       }

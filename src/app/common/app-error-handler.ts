@@ -5,8 +5,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class AppErrorHandler implements ErrorHandler{
   constructor(private _snackBar: MatSnackBar) {
   }
-  handleError(error: any): void {
+  handleError(error: Error): void {
     console.log("Global Error",error)
-    this._snackBar.open("something went wrong", "close");
+    this._snackBar.open(error.message, "close");
   }
 }

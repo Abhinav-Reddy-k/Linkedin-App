@@ -1,42 +1,41 @@
 <div class="center">
   <div class="container center">
-
     <div class="vertical-center">
       <mat-card>
-      <form #edu="ngForm" (ngSubmit)="onSubmit(edu.value)">
+      <form #add="ngForm" (ngSubmit)="onSubmit(add)">
         <h1>Address Form</h1>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>H.No</mat-label>
           <input ngModel #hNo="ngModel" name="hNo" required [ngModel]="formData.hNo" matInput>
           <mat-error *ngIf="!hNo.value">hNo is required</mat-error>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Colony</mat-label>
           <input ngModel #colony="ngModel" name="colony" [ngModel]="formData.colony" required matInput>
           <mat-error *ngIf="!colony.value">colony is required</mat-error>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>State</mat-label>
           <input ngModel [ngModel]="formData.state" #state="ngModel" name="state" required matInput>
           <mat-error *ngIf="!state.value">state is required</mat-error>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Country</mat-label>
           <input ngModel [ngModel]="formData.country" #country="ngModel" name="country" required matInput>
           <mat-error *ngIf="!country.value">country is required</mat-error>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Locality</mat-label>
           <input ngModel [ngModel]="formData.locality" #locality="ngModel" name="locality" required matInput>
           <mat-error *ngIf="!locality.value">locality is required</mat-error>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>City</mat-label>
           <input ngModel [ngModel]="formData.city" #city="ngModel" name="city" required matInput>
           <mat-error *ngIf="!city.value">city is required</mat-error>
@@ -49,3 +48,4 @@
     </div>
   </div>
 </div>
+
