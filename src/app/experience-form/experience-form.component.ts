@@ -43,6 +43,7 @@ export class ExperienceFormComponent implements OnInit {
     if (!data.valid) {
       return
     }
+    console.log({...data.value, profileId: this.profileId})
     this.experienceService.updateExperience({...data.value, profileId: this.profileId}, parseInt(this.id)).subscribe({
       next: (edu) => {
         this.router.navigate(['/profile'])

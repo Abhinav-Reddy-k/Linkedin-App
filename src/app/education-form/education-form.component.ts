@@ -49,6 +49,7 @@ export class EducationFormComponent implements OnInit {
     if (!data.valid) {
       return
     }
+    console.log({...data.value, profileId: this.profileId})
     this.educationService.updateEducation({...data.value, profileId: this.profileId}, parseInt(this.id)).subscribe({
       next: (edu) => {
         this.router.navigate(['/profile'])

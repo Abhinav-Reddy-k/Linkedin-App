@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
       return
     }
     this.registerService.create({...this.form.value, imageUrl: "", headline: ""}).subscribe((profile) => {
+      console.log(profile)
       this.store.dispatch(login({data: profile as ProfileModel}))
       this.router.navigate(["/profile"])
     }, error => {

@@ -1,20 +1,25 @@
+<h1 style="float: left">Address</h1>
+<button style="float: right" mat-raised-button color="primary" routerLink="address/new">Add</button>
+<br>
+<br>
+
 <div class="grid-container">
-  <div *ngFor="let edu of address " >
+  <div *ngFor="let add of address " >
     <a  class="data-card">
-      <h3>{{edu.country | uppercase}}</h3>
-      <h4>{{edu.state}}</h4>
-      <p>City : {{edu.city}}<br>
-        Locality : {{edu.locality}}<br>
-        Colony : {{edu.colony}}<br>
-        H.No : {{edu.hNo }}<br>
+      <h3>{{add.country | uppercase}}</h3>
+      <h4>{{add.state}}</h4>
+      <p>City : {{add.city}}<br>
+        Locality : {{add.locality}}<br>
+        Colony : {{add.colony}}<br>
+        H.No : {{add.hNo }}<br>
       </p>
-      <span [routerLink]="'address/'+edu.id" class="link-text pointer">
+      <span [routerLink]="'address/'+add.id" class="link-text pointer">
       Edit
       <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.8631 0.929124L24.2271 7.29308C24.6176 7.68361 24.6176 8.31677 24.2271 8.7073L17.8631 15.0713C17.4726 15.4618 16.8394 15.4618 16.4489 15.0713C16.0584 14.6807 16.0584 14.0476 16.4489 13.657L21.1058 9.00019H0.47998V7.00019H21.1058L16.4489 2.34334C16.0584 1.95281 16.0584 1.31965 16.4489 0.929124C16.8394 0.538599 17.4726 0.538599 17.8631 0.929124Z" fill="#753BBD"/>
 </svg>
     </span>
-      <span class="link-text pointer" (click)="onAddressDelete(edu.id)">
+      <span class="link-text pointer" (click)="onAddressDelete(add.id)">
       Delete
       <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.8631 0.929124L24.2271 7.29308C24.6176 7.68361 24.6176 8.31677 24.2271 8.7073L17.8631 15.0713C17.4726 15.4618 16.8394 15.4618 16.4489 15.0713C16.0584 14.6807 16.0584 14.0476 16.4489 13.657L21.1058 9.00019H0.47998V7.00019H21.1058L16.4489 2.34334C16.0584 1.95281 16.0584 1.31965 16.4489 0.929124C16.8394 0.538599 17.4726 0.538599 17.8631 0.929124Z" fill="#753BBD"/>
